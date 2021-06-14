@@ -5,7 +5,7 @@
     </div>
     <div class="search">
         <input type="text" placeholder="Cerca il titolo di un film" v-model.trim="searchFilm" @keyup.enter="startSearch()">
-        <button @click.prevent="startSearch()">Cerca</button>
+        <button @click="startSearch">Cerca</button>
     </div>
 </header>
 </template>

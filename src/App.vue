@@ -22,16 +22,19 @@ export default {
       apiKey: "ee0f54b12ccb8843ee3545b734fca55d",
       query: "",
       movies: [],
+      series: []
     }
   },
   methods: {
     updateSearch(selectFilm) {
       this.query = selectFilm;
+      this.getMovies();
+      this.getSeries()
     },
-    getMovies (search) {
+    getMovies() {
       const apiParams = {
         api_key: this.apiKey,
-        query: search,
+        query: this.query,
         language: 'it-IT'
       }
       axios
@@ -42,6 +45,23 @@ export default {
             (res) => {
                 this.movies = res.data.results
                 console.log(this.movies);
+            }
+        )
+    },
+    getSeries() {
+      const apiParams = {
+        api_key: this.apiKey,
+        query: this.query,
+        language: 'it-IT'
+      }
+      axios
+        .get(this.apiUrl + 'tv', {
+          params: apiParams
+        })
+        .then(
+            (res) => {
+                this.series = res.data.results
+                console.log(this.series);
             }
         )
     },

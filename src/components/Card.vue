@@ -2,16 +2,16 @@
     <div class="card_box">
         <ul class="card_details">
         <li>
-            <h2>Titolo: {{ movie.title }}</h2>
+            <p> <strong>Titolo: </strong>{{ movie.title }} {{ movie.name }}</p>
         </li>
         <li> 
-            <h2>Titolo originale:</h2> 
+            <p> <strong>Titolo originale: </strong> {{ movie.original_title }} {{ movie.original_name }}</p> 
         </li>
         <li> 
-            <h2>Lingua:</h2>
+            <p> <strong>Lingua: </strong> {{ movie.original_language }} {{ movie.original_language }}</p>
         </li>
         <li>
-            <h2>Voto:</h2>
+            <p> <strong>Voto: </strong> {{ movie.vote_average }}</p>
         </li>
     </ul>
     </div>
@@ -31,5 +31,15 @@ export default {
         width: calc(100% / 5);
         padding: 10px 15px;
         border: 1px solid black;
+
+        ul {
+            list-style: none;
+            li {
+                h2 {
+                    font-size: 16px;
+    
+                }
+            }
+        }
     }
 </style>
