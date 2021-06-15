@@ -29,7 +29,7 @@ export default {
     updateSearch(selectFilm) {
       this.query = selectFilm;
       this.getMovies();
-      this.getSeries()
+      this.getSeries();
     },
     getMovies() {
       const apiParams = {
@@ -70,9 +70,16 @@ export default {
 </script>
 
 <style lang="scss">
+
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+
+  body {
+    background-color: black;
   }
 </style>

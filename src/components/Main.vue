@@ -1,6 +1,9 @@
 <template>
   <main>
-      <Card v-for="movie in movies" :key="movie.id" :movie="movie" />
+    <div v-if="movies.length > 0" class="cards">
+        <Card v-for="movie in movies" :key="movie.id" :movie="movie" />
+    </div>
+      <h2 v-else>Non ci sono risultati per la tua ricerca</h2>
   </main>
 </template>
 
@@ -21,7 +24,17 @@ export default {
 
 <style lang="scss" scoped>
     main {
-        display: flex;
-        flex-wrap: wrap;
+      text-align: center;
+        .cards {
+          display: flex;
+          flex-wrap: wrap;
+          background-color: black;
+        }
+
+        h2 {
+          color: white;
+          text-transform: uppercase;
+          margin: 100px 0;
+        }
     }
 </style>

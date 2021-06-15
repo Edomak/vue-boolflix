@@ -1,7 +1,7 @@
 <template>
 <header>
     <div class="logo">
-        <img src="../assets/logobool2.png" alt="">
+        <a href="/"><img src="../assets/logobool2.png" alt="boolflix Logo"></a> 
     </div>
     <div class="search">
         <input type="text" placeholder="Cerca il titolo di un film" v-model.trim="searchFilm" @keyup.enter="startSearch()">
@@ -35,6 +35,7 @@ export default {
         height: 100px;
         line-height: 100px;
         background-color: black;
+        // border: 1px solid red;
     }
 
     .logo {
