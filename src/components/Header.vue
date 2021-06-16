@@ -1,7 +1,7 @@
 <template>
 <header>
     <div class="logo">
-        <a href="/"><img src="../assets/logobool2.png" alt="boolflix Logo"></a> 
+        <a href="#"><img src="../assets/logobool2.png" alt="boolflix Logo"></a> 
     </div>
     <div class="search">
         <input type="text" placeholder="Cerca il titolo di un film" v-model.trim="searchFilm" @keyup.enter="startSearch()">
@@ -35,7 +35,6 @@ export default {
         height: 100px;
         line-height: 100px;
         background-color: black;
-        // border: 1px solid red;
     }
 
     .logo {
@@ -47,7 +46,12 @@ export default {
         height: 40px;
         border-radius: 8px;
         cursor: pointer;
-        margin-right: 10px;
+        margin-right: 15px;
+
+        &[placeholder] {
+            padding-left: 10px;
+            font-size: 16px;
+        }
     }
 
     button {
@@ -56,5 +60,11 @@ export default {
         border-radius: 5px;
         cursor: pointer;
         margin-right: 10px;
+        text-transform: uppercase;
+
+        &:hover {
+            color: red;
+            border: 1px solid red;
+        }
     }
 </style>

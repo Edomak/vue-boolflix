@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@fontsource/roboto": "^4.4.5",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",

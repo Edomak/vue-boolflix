@@ -1,9 +1,21 @@
 <template>
   <main>
-    <div v-if="movies.length > 0" class="cards">
-        <Card v-for="movie in movies" :key="movie.id" :movie="movie" />
-    </div>
-      <h2 v-else>Non ci sono risultati per la tua ricerca</h2>
+    <section v-show="movies.length > 0" class="movies">
+      <h2>Film:</h2>
+      <ul class="cards">
+        <li>
+          <Card v-for="movie in movies" :key="movie.id" :item="movie" />
+        </li>
+      </ul>
+    </section>
+    <section v-show="series.length > 0" class="series">
+      <h2>Tv Series:</h2>
+      <ul class="cards">
+        <li>
+          <Card v-for="serie in series" :key="serie.id" :item="serie" />
+        </li>
+      </ul>
+    </section>
   </main>
 </template>
 
@@ -18,14 +30,18 @@ export default {
   },
   props: {
     movies: Array,
+    series: Array
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
     main {
       text-align: center;
-        .cards {
+        ul.cards li {
           display: flex;
           flex-wrap: wrap;
           background-color: black;
@@ -34,7 +50,17 @@ export default {
         h2 {
           color: white;
           text-transform: uppercase;
-          margin: 100px 0;
+          margin: 20px 0;
+
+          .fas {
+            margin: 0 5px;
+            font-size: 20px;
+          }
+        }
+
+        h3 {
+          color: white;
+          text-transform: uppercase;
         }
     }
 </style>

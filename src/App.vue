@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @search="updateSearch" />
-    <Main :movies="movies" />
+    <Main :movies="movies" :series="series" />
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     Header,
     Main
   },
-  data: function() {
+  data: function () {
     return {
       apiUrl: "https://api.themoviedb.org/3/search/",
       apiKey: "ee0f54b12ccb8843ee3545b734fca55d",
@@ -81,5 +81,9 @@ export default {
 
   body {
     background-color: black;
+  }
+  main {
+    width: 95%;
+    margin: 0 auto;
   }
 </style>

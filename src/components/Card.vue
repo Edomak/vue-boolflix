@@ -3,30 +3,30 @@
         <!-- Poster -->
         <div class="poster">
             <img 
-            v-if="movie.poster_path" 
-            :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" 
+            v-if="item.poster_path" 
+            :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" 
             alt="poster movie">
             <img class="unavailable" v-else src="@/assets/unavaible.jpeg" alt="Poster Unavailable">
         </div>
         <!-- /Poster -->
-        <ul class="card_details">
+        <ul class="card_details overlay">
         <!-- Title -->
         <li class="title">
-            <p> <strong>Titolo: </strong>{{ movie.title }} {{ movie.name }}</p>
+            <p><strong>Titolo: </strong>{{ item.title ? item.title : item.name }}</p>
         </li>
         <!-- /Title -->
         <!-- Original title -->
         <li class="original_title"> 
-            <p> <strong>Titolo originale: </strong> {{ movie.original_title }} {{ movie.original_name }}</p> 
+            <p><strong>Titolo originale: </strong> {{ item.original_title ? item.original_title : item.original_name }}</p> 
         </li>
         <!-- /Original title -->
         <!-- Language -->
         <li class="language"> 
             <strong>Lingua: </strong>
-            <img v-if="isFlag(movie.original_language)"  
-            :src="require(`@/assets/${movie.original_language}.png`)" 
-            :alt="movie.original_language" class="flag">
-            <span v-else>{{ movie.original_language }}</span>
+            <img v-if="isFlag(item.original_language)"  
+            :src="require(`@/assets/${item.original_language}.png`)" 
+            :alt="item.original_language" class="flag">
+            <span v-else>{{ item.original_language }}</span>
         </li>
         <!-- /Language -->
         <!-- Overview -->
@@ -36,7 +36,13 @@
         <!-- /Overview -->
         <!-- Vote -->
         <li class="vote">
-            <p> <strong>Voto: </strong> {{ movie.vote_average }}</p>
+            <strong>Voto: </strong>
+            <span>
+                <i v-for="(star, index) in starVote(item.vote_average)" :key="index" class="fas fa-star"></i>
+                </span>
+            <span>
+                <i v-for="(star, index) in 5 - starVote(item.vote_average)" :key="index" class="far fa-star"></i>
+            </span>
         </li>
         <!-- /Vote -->
         </ul>
@@ -44,10 +50,11 @@
 </template>
 
 <script>
+
 export default {
     name: "Card",
     props: {
-    movie: Object,
+    item: Object
   },
   data: function () {
      return {
@@ -55,18 +62,23 @@ export default {
      }
   },
   methods: {
-      isFlag(language) {
-            return this.flagsImg.includes(language);
-        }
+    isFlag(language) {
+        return this.flagsImg.includes(language);
+    },
+    starVote (vote) {
+        return Math.ceil(vote / 2);
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
     .card_box {
-        width: calc(100% / 6);
+        width: calc(100% / 5);
         padding: 10px 10px;
-        border: 1px solid black;
 
         // .card_details {
         //     display: none;
@@ -91,10 +103,16 @@ export default {
         }
 
         .poster img {
-            width: 200px;
-            height: 300px;
+            width: 250px;
+            height: 350px;
             border-radius: 5px;
             cursor: pointer;
+        }
+
+        .vote > span {
+            font-size: 10px;
+            margin: 3px 0;
+            color: yellow;
         }
     }
 </style>
