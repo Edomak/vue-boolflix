@@ -1,15 +1,16 @@
 <template>
   <main>
-    <section v-show="movies.length > 0" class="movies">
-      <h2>Film:</h2>
+    <section v-if="movies.length > 0" class="movies">
+      <h2>film:</h2>
       <ul class="cards">
         <li>
           <Card v-for="movie in movies" :key="movie.id" :item="movie" />
         </li>
       </ul>
     </section>
+    <h2 v-else>La tua ricerca non ha prodotto risultati</h2>
     <section v-show="series.length > 0" class="series">
-      <h2>Tv Series:</h2>
+      <h2>serie tv:</h2>
       <ul class="cards">
         <li>
           <Card v-for="serie in series" :key="serie.id" :item="serie" />

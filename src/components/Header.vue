@@ -22,7 +22,7 @@ export default {
         startSearch() {
             this.$emit("search", this.searchFilm)
             console.log(this.searchFilm);
-        }
+        },
     }
 
 }
@@ -38,7 +38,7 @@ export default {
     }
 
     .logo {
-        margin: 10px;
+        margin: 15px;
     }
 
     input {
